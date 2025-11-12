@@ -1,9 +1,13 @@
-import { APITester } from "./APITester";
+import { useState } from "react";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "@/components/mode-toggle";
+import { Terminal } from "@/components/terminal";
+import { IdentificationForm } from "@/components/identification-form";
 import "./index.css";
 
 export function App() {
+  const [identification, setIdentification] = useState<string | null>(null);
+
   return (
     <ThemeProvider defaultTheme="system" storageKey="meoru-ui-theme">
       <div className="min-h-screen bg-background text-foreground">
@@ -11,11 +15,11 @@ export function App() {
           <div className="flex justify-end mb-4">
             <ModeToggle />
           </div>
-          <h1>Bun + React</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test HMR
-          </p>
-          <APITester />
+          {identification ? (
+            <Terminal identification={identification} />
+          ) : (
+            <IdentificationForm onIdentify={setIdentification} />
+          )}
         </div>
       </div>
     </ThemeProvider>

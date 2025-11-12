@@ -27,6 +27,37 @@ const server = serve({
         message: `Hello, ${name}!`,
       });
     },
+
+    "/api/command": {
+      async POST(req) {
+        try {
+          const body = await req.json();
+          const { identification, command } = body;
+
+          if (!identification || !command) {
+            return Response.json(
+              { error: "identification과 command가 필요합니다." },
+              { status: 400 }
+            );
+          }
+
+          // 정답 검증: "bunx intro"가 정답
+          const isCorrect = command.trim() === "bunx intro";
+
+          return Response.json({
+            identification,
+            command,
+            isCorrect,
+            timestamp: new Date().toISOString(),
+          });
+        } catch (error) {
+          return Response.json(
+            { error: "요청 처리 중 오류가 발생했습니다." },
+            { status: 500 }
+          );
+        }
+      },
+    },
   },
 
   development: process.env.NODE_ENV !== "production" && {
