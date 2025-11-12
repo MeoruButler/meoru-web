@@ -1,17 +1,25 @@
-import { useRef, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 
 export function APITester() {
   const responseInputRef = useRef<HTMLTextAreaElement>(null);
+  const [method, setMethod] = useState("GET");
+  const [endpoint, setEndpoint] = useState("/api/hello");
 
   const testEndpoint = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
-      const form = e.currentTarget;
-      const formData = new FormData(form);
-      const endpoint = formData.get("endpoint") as string;
       const url = new URL(endpoint, location.href);
-      const method = formData.get("method") as string;
       const res = await fetch(url, { method });
 
       const data = await res.json();
@@ -24,16 +32,31 @@ export function APITester() {
   return (
     <div className="api-tester">
       <form onSubmit={testEndpoint} className="endpoint-row">
-        <select name="method" className="method">
-          <option value="GET">GET</option>
-          <option value="PUT">PUT</option>
-        </select>
-        <input type="text" name="endpoint" defaultValue="/api/hello" className="url-input" placeholder="/api/hello" />
-        <button type="submit" className="send-button">
-          Send
-        </button>
+        <Select name="method" value={method} onValueChange={setMethod}>
+          <SelectTrigger className="w-[120px]">
+            <SelectValue placeholder="Method" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="GET">GET</SelectItem>
+            <SelectItem value="PUT">PUT</SelectItem>
+          </SelectContent>
+        </Select>
+        <Input
+          type="text"
+          name="endpoint"
+          value={endpoint}
+          onChange={(e) => setEndpoint(e.target.value)}
+          placeholder="/api/hello"
+          className="flex-1"
+        />
+        <Button type="submit">Send</Button>
       </form>
-      <textarea ref={responseInputRef} readOnly placeholder="Response will appear here..." className="response-area" />
+      <Textarea
+        ref={responseInputRef}
+        readOnly
+        placeholder="Response will appear here..."
+        className="response-area min-h-[200px]"
+      />
     </div>
   );
 }

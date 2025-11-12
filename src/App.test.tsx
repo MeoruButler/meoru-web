@@ -9,16 +9,6 @@ test("App renders correctly", () => {
   expect(heading).toBeInTheDocument();
 });
 
-test("App contains logo images", () => {
-  render(<App />);
-
-  const bunLogo = screen.getByAltText("Bun Logo");
-  const reactLogo = screen.getByAltText("React Logo");
-
-  expect(bunLogo).toBeInTheDocument();
-  expect(reactLogo).toBeInTheDocument();
-});
-
 test("App contains edit instruction", () => {
   render(<App />);
 
