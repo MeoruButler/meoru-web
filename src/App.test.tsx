@@ -18,3 +18,10 @@ test("App contains edit instruction", () => {
   });
   expect(instruction).toBeInTheDocument();
 });
+
+test("App contains ModeToggle", () => {
+  render(<App />);
+
+  const toggleButton = screen.getByRole("button", { name: /toggle theme/i });
+  expect(toggleButton).toBeInTheDocument();
+});
