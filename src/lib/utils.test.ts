@@ -8,7 +8,9 @@ describe('utils', () => {
 		});
 
 		it('handles conditional classes', () => {
-			expect(cn('w-full', true && 'h-full', false && 'text-red-500')).toBe('w-full h-full');
+			const isTrue = true;
+			const isFalse = false;
+			expect(cn('w-full', isTrue && 'h-full', isFalse && 'text-red-500')).toBe('w-full h-full');
 		});
 
 		it('resolves tailwind conflicts efficiently', () => {
