@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import SpotifyStatus from '$lib/components/SpotifyStatus.svelte';
 
 	let message = $state('');
 	let response = $state({});
@@ -31,6 +32,10 @@
 		<h1 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
 			{!message ? 'Loading...' : message}
 		</h1>
+
+		<div class="mt-6 w-full max-w-md">
+			<SpotifyStatus />
+		</div>
 
 		<code class="rounded-md bg-gray-900 p-4 text-white">
 			<pre>{JSON.stringify(response, null, 2)}</pre>

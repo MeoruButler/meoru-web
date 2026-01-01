@@ -7,6 +7,9 @@ export default defineConfig({
 		globals: true,
 		environment: 'jsdom',
 		include: ['src/**/*.{test,spec}.{js,ts}'],
-		setupFiles: ['src/setupTests.ts']
+		setupFiles: ['src/setupTests.ts'],
+		alias: {
+			'$env/static/private': '/tests/mocks/env.ts'
+		}
 	}
 });
