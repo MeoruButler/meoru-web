@@ -1,21 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import SpotifyStatus from '$lib/components/SpotifyStatus.svelte';
-
-	let message = $state('');
-	let response = $state({});
-
-	onMount(() => {
-		fetchData();
-	});
-
-	const fetchData = async () => {
-		const res = await fetch('/api/hello');
-		const json = await res.json();
-
-		response = json;
-		message = json.message;
-	};
 </script>
 
 <svelte:head>
@@ -25,27 +9,8 @@
 
 <section class="w-full py-12 md:py-24 lg:py-32">
 	<div class="flex flex-col items-center justify-center space-y-4 px-4 md:px-6">
-		<p class="max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-			Here is the response to your API call:
-		</p>
-
-		<h1 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-			{!message ? 'Loading...' : message}
-		</h1>
-
 		<div class="mt-6 w-full max-w-md">
 			<SpotifyStatus />
 		</div>
-
-		<code class="rounded-md bg-gray-900 p-4 text-white">
-			<pre>{JSON.stringify(response, null, 2)}</pre>
-		</code>
-
-		<a
-			href="/api/hello"
-			class="inline-flex h-9 items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:ring-1 focus-visible:ring-gray-950 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
-		>
-			View the API call
-		</a>
 	</div>
 </section>

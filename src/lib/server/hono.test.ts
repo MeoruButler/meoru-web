@@ -34,12 +34,6 @@ describe('Hono Spotify Endpoints', () => {
 		expect(json.uptime).toBeDefined();
 	});
 
-	it('GET /api/hello returns hello message', async () => {
-		const res = await app.request('/api/hello');
-		expect(res.status).toBe(200);
-		expect(await res.json()).toEqual({ message: 'Hello from Hono!' });
-	});
-
 	it('GET /api/spotify/now-playing returns 204/isPlaying false if nothing playing', async () => {
 		vi.mocked(spotify.getNowPlaying).mockResolvedValue({ status: 204 } as Response);
 

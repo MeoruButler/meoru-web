@@ -10,12 +10,6 @@ app.get('/health', (c) => {
 	});
 });
 
-app.get('/hello', (c) => {
-	return c.json({
-		message: 'Hello from Hono!'
-	});
-});
-
 app.get('/spotify/now-playing', async (c) => {
 	try {
 		const { getNowPlaying } = await import('./spotify');
