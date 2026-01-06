@@ -34,6 +34,10 @@ export default ts.config(
 				parser: ts.parser,
 				svelteConfig
 			}
+		},
+		rules: {
+			// 외부 URL 링크에는 resolve()가 필요하지 않음
+			'svelte/no-navigation-without-resolve': 'off'
 		}
 	}
 );

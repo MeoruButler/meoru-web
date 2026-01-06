@@ -81,6 +81,7 @@
 					<a
 						href={nowPlaying.songUrl}
 						target="_blank"
+						rel="noopener noreferrer"
 						class="truncate text-sm font-semibold hover:underline">{nowPlaying.title}</a
 					>
 					<p class="text-muted-foreground truncate text-xs">{nowPlaying.artist}</p>
@@ -105,6 +106,7 @@
 					<a
 						href={recent.songUrl}
 						target="_blank"
+						rel="noopener noreferrer"
 						class="truncate text-sm font-semibold hover:underline">{recent.title}</a
 					>
 					<p class="text-muted-foreground truncate text-xs">{recent.artist}</p>
