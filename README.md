@@ -7,6 +7,7 @@ MeoruButler on the WWW
 - Svelte
 - Hono
 - TailwindCSS
+- shadcn-svelte
 - Vite
 - Vitest
 - Playwright
