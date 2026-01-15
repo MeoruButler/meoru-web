@@ -1,11 +1,11 @@
 <script lang="ts">
-	import '../app.css';
+	import '$styles/app.css';
 
 	let { children } = $props();
 </script>
 
-<div class="flex flex-col items-center justify-center space-y-4 px-4 md:px-6">
-	<main>
+<div class="flex min-h-screen flex-col items-center justify-center px-4 sm:px-6">
+	<main class="w-full max-w-md">
 		{@render children()}
 	</main>
 </div>

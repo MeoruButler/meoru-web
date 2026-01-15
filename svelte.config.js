@@ -13,7 +13,9 @@ const config = {
 		// See https://svelte.dev/docs/kit/adapters for more information about adapters.
 		adapter: vercel(),
 		alias: {
-			$components: 'src/lib/components'
+			$shared: 'src/shared',
+			$widgets: 'src/widgets',
+			$styles: 'src/app/styles'
 		}
 	}
 };
