@@ -1,5 +1,9 @@
 <script lang="ts">
-	import { Sun, Moon, Monitor, Languages, Check } from 'lucide-svelte';
+	import Sun from '@lucide/svelte/icons/sun';
+	import Moon from '@lucide/svelte/icons/moon';
+	import Monitor from '@lucide/svelte/icons/monitor';
+	import Languages from '@lucide/svelte/icons/languages';
+	import Check from '@lucide/svelte/icons/check';
 	import { userPrefersMode, setMode } from 'mode-watcher';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { Button } from '$lib/components/ui/button';
@@ -78,22 +82,22 @@
 						</Button>
 					{/snippet}
 				</DropdownMenu.Trigger>
-			<DropdownMenu.Content align="end">
-				{#each languageOptions as option (option.value)}
-					<DropdownMenu.Item
-						onclick={() => handleLanguageChange(option.value)}
-						class="flex items-center justify-between"
-					>
-						<div class="flex items-center gap-2">
-							<span>{option.flag}</span>
-							<span>{getLanguageLabel(option.labelKey)}</span>
-						</div>
-						{#if currentLocale === option.value}
-							<Check class="ml-2 size-4" />
-						{/if}
-					</DropdownMenu.Item>
-				{/each}
-			</DropdownMenu.Content>
+				<DropdownMenu.Content align="end">
+					{#each languageOptions as option (option.value)}
+						<DropdownMenu.Item
+							onclick={() => handleLanguageChange(option.value)}
+							class="flex items-center justify-between"
+						>
+							<div class="flex items-center gap-2">
+								<span>{option.flag}</span>
+								<span>{getLanguageLabel(option.labelKey)}</span>
+							</div>
+							{#if currentLocale === option.value}
+								<Check class="ml-2 size-4" />
+							{/if}
+						</DropdownMenu.Item>
+					{/each}
+				</DropdownMenu.Content>
 			</DropdownMenu.Root>
 
 			<!-- Theme Toggle -->

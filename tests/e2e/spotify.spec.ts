@@ -2,11 +2,7 @@ import { test, expect } from './fixtures';
 
 test.describe('Spotify Component', () => {
 	test('shows Now Playing state', async ({ page }) => {
-		// Mock API response
-		await page.route('/api/spotify/recent', async (route) => {
-			await route.fulfill({ json: { count: 0 } });
-		});
-
+		// SpotifyStatus 컴포넌트는 /api/spotify/now-playing만 호출함
 		await page.route('/api/spotify/now-playing', async (route) => {
 			await route.fulfill({
 				json: {
@@ -21,20 +17,19 @@ test.describe('Spotify Component', () => {
 		});
 
 		await page.goto('/');
-		// 기본 locale이 한국어이므로 '재생 중' 텍스트를 찾음
-		await expect(page.getByText('재생 중')).toBeVisible();
-		await expect(page.getByText('Mock Song')).toBeVisible();
+		// 로딩 완료 후 텍스트가 표시될 때까지 대기
+		await expect(page.getByText('Mock Song')).toBeVisible({ timeout: 10000 });
+		// 브라우저 기본 locale이 영어이므로 영어 텍스트 확인
+		await expect(page.getByText('Now Playing')).toBeVisible();
 		await expect(page.getByText('Mock Artist')).toBeVisible();
 	});
 
 	test('shows Recently Played state when not playing', async ({ page }) => {
+		// isPlaying: false일 때도 title이 있으면 최근 재생으로 표시됨
 		await page.route('/api/spotify/now-playing', async (route) => {
-			await route.fulfill({ json: { isPlaying: false } });
-		});
-
-		await page.route('/api/spotify/recent', async (route) => {
 			await route.fulfill({
 				json: {
+					isPlaying: false,
 					title: 'Recent Song',
 					artist: 'Recent Artist',
 					album: 'Recent Album',
@@ -45,8 +40,9 @@ test.describe('Spotify Component', () => {
 		});
 
 		await page.goto('/');
-		// 기본 locale이 한국어이므로 '최근 재생' 텍스트를 찾음
-		await expect(page.getByText('최근 재생')).toBeVisible();
-		await expect(page.getByText('Recent Song')).toBeVisible();
+		// 로딩 완료 후 텍스트가 표시될 때까지 대기
+		await expect(page.getByText('Recent Song')).toBeVisible({ timeout: 10000 });
+		// 브라우저 기본 locale이 영어이므로 영어 텍스트 확인
+		await expect(page.getByText('Recently Played')).toBeVisible();
 	});
 });

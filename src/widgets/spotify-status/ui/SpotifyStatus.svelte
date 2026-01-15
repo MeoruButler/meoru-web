@@ -81,39 +81,7 @@
 	});
 </script>
 
-<style>
-	@keyframes fadeInScale {
-		from {
-			opacity: 0;
-			transform: scale(0.95);
-		}
-		to {
-			opacity: 1;
-			transform: scale(1);
-		}
-	}
-
-	@keyframes fadeInSlide {
-		from {
-			opacity: 0;
-			transform: translateX(-8px);
-		}
-		to {
-			opacity: 1;
-			transform: translateX(0);
-		}
-	}
-
-	.animate-fade-in-scale {
-		animation: fadeInScale 0.4s ease-out;
-	}
-
-	.animate-fade-in-slide {
-		animation: fadeInSlide 0.4s ease-out;
-	}
-</style>
-
-<div class={cn('w-full max-w-lg select-none overflow-visible p-4', className)}>
+<div class={cn('w-full max-w-lg overflow-visible p-4 select-none', className)}>
 	{#if loading}
 		<!-- 로딩 스켈레톤 -->
 		<div class="relative flex items-center">
@@ -145,7 +113,7 @@
 				<!-- LP Disc -->
 				<div
 					class={cn(
-						'absolute left-0 top-1/2 z-0 flex size-24 -translate-y-1/2 items-center justify-center rounded-full sm:size-32',
+						'absolute top-1/2 left-0 z-0 flex size-24 -translate-y-1/2 items-center justify-center rounded-full sm:size-32',
 						'bg-linear-to-br from-neutral-800 via-neutral-900 to-black',
 						'shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)]',
 						'transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]',
@@ -169,8 +137,12 @@
 					<div
 						class="relative flex size-8 items-center justify-center rounded-full bg-linear-to-br from-neutral-700 via-neutral-800 to-neutral-900 shadow-[inset_0_2px_4px_rgba(0,0,0,0.3)] sm:size-10"
 					>
-						<div class="absolute inset-0 rounded-full bg-linear-to-b from-white/10 to-transparent"></div>
-						<div class="absolute top-1 size-0.5 rounded-full bg-neutral-500/60 sm:top-1.5 sm:size-1"></div>
+						<div
+							class="absolute inset-0 rounded-full bg-linear-to-b from-white/10 to-transparent"
+						></div>
+						<div
+							class="absolute top-1 size-0.5 rounded-full bg-neutral-500/60 sm:top-1.5 sm:size-1"
+						></div>
 						<div
 							class="size-1.5 rounded-full bg-neutral-950 shadow-[inset_0_1px_2px_rgba(0,0,0,0.8)] sm:size-2"
 						></div>
@@ -235,12 +207,12 @@
 					class="group/link transition-colors duration-300 hover:text-green-500"
 				>
 					<span class="flex items-center gap-1.5">
-						<span class="truncate text-base font-bold leading-tight sm:text-lg">
+						<span class="truncate text-base leading-tight font-bold sm:text-lg">
 							{spotifyData.title}
 						</span>
 						{#if spotifyData.isExplicit}
 							<span
-								class="inline-grid size-4 shrink-0 place-items-center rounded-full border border-red-600 bg-white pt-px text-[9px] font-bold leading-none text-red-600 dark:bg-red-600 dark:text-white"
+								class="inline-grid size-4 shrink-0 place-items-center rounded-full border border-red-600 bg-white pt-px text-[9px] leading-none font-bold text-red-600 dark:bg-red-600 dark:text-white"
 								title="Explicit content"
 								aria-label="Explicit content"
 							>
@@ -258,3 +230,35 @@
 		<p class="text-muted-foreground text-sm sm:text-base">{m.spotify_not_playing()}</p>
 	{/if}
 </div>
+
+<style>
+	@keyframes fadeInScale {
+		from {
+			opacity: 0;
+			transform: scale(0.95);
+		}
+		to {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+
+	@keyframes fadeInSlide {
+		from {
+			opacity: 0;
+			transform: translateX(-8px);
+		}
+		to {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+
+	.animate-fade-in-scale {
+		animation: fadeInScale 0.4s ease-out;
+	}
+
+	.animate-fade-in-slide {
+		animation: fadeInSlide 0.4s ease-out;
+	}
+</style>
