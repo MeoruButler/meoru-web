@@ -78,22 +78,22 @@
 						</Button>
 					{/snippet}
 				</DropdownMenu.Trigger>
-			<DropdownMenu.Content align="end">
-				{#each languageOptions as option (option.value)}
-					<DropdownMenu.Item
-						onclick={() => handleLanguageChange(option.value)}
-						class="flex items-center justify-between"
-					>
-						<div class="flex items-center gap-2">
-							<span>{option.flag}</span>
-							<span>{getLanguageLabel(option.labelKey)}</span>
-						</div>
-						{#if currentLocale === option.value}
-							<Check class="ml-2 size-4" />
-						{/if}
-					</DropdownMenu.Item>
-				{/each}
-			</DropdownMenu.Content>
+				<DropdownMenu.Content align="end">
+					{#each languageOptions as option (option.value)}
+						<DropdownMenu.Item
+							onclick={() => handleLanguageChange(option.value)}
+							class="flex items-center justify-between"
+						>
+							<div class="flex items-center gap-2">
+								<span>{option.flag}</span>
+								<span>{getLanguageLabel(option.labelKey)}</span>
+							</div>
+							{#if currentLocale === option.value}
+								<Check class="ml-2 size-4" />
+							{/if}
+						</DropdownMenu.Item>
+					{/each}
+				</DropdownMenu.Content>
 			</DropdownMenu.Root>
 
 			<!-- Theme Toggle -->
