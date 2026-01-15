@@ -110,7 +110,7 @@
 								<option.icon class="size-4" />
 								<span>{getThemeLabel(option.labelKey)}</span>
 							</div>
-							{#if mode.current === option.value}
+							{#if (mode.current ?? 'system') === option.value}
 								<Check class="ml-2 size-4" />
 							{/if}
 						</DropdownMenu.Item>

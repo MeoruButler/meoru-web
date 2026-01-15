@@ -21,7 +21,8 @@ test.describe('Spotify Component', () => {
 		});
 
 		await page.goto('/');
-		await expect(page.getByText('Now Playing')).toBeVisible();
+		// 기본 locale이 한국어이므로 '재생 중' 텍스트를 찾음
+		await expect(page.getByText('재생 중')).toBeVisible();
 		await expect(page.getByText('Mock Song')).toBeVisible();
 		await expect(page.getByText('Mock Artist')).toBeVisible();
 	});
@@ -44,7 +45,8 @@ test.describe('Spotify Component', () => {
 		});
 
 		await page.goto('/');
-		await expect(page.getByText('Recently Played')).toBeVisible();
+		// 기본 locale이 한국어이므로 '최근 재생' 텍스트를 찾음
+		await expect(page.getByText('최근 재생')).toBeVisible();
 		await expect(page.getByText('Recent Song')).toBeVisible();
 	});
 });

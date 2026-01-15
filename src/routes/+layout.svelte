@@ -1,24 +1,18 @@
 <script lang="ts">
 	import '$styles/app.css';
-	import { ModeWatcher, mode } from 'mode-watcher';
+	import { ModeWatcher } from 'mode-watcher';
 	import { Header } from '$lib/components/layout';
 
 	let { children } = $props();
 
-	// Theme colors matching app.css
+	// Theme colors matching app.css - using HSL values converted to hex
 	const themeColors = {
-		light: 'hsl(0 0% 100%)', // --background in :root
-		dark: 'hsl(222.2 84% 4.9%)' // --background in .dark
+		light: '#ffffff', // --background in :root (hsl(0 0% 100%))
+		dark: '#020817' // --background in .dark (hsl(222.2 84% 4.9%))
 	} as const;
-
-	const themeColor = $derived(mode.current === 'dark' ? themeColors.dark : themeColors.light);
 </script>
 
-<svelte:head>
-	<meta name="theme-color" content={themeColor} />
-</svelte:head>
-
-<ModeWatcher />
+<ModeWatcher defaultMode="system" {themeColors} />
 
 <div class="flex min-h-dvh flex-col">
 	<Header />

@@ -14,7 +14,7 @@ export default defineConfig({
 		sveltekit(),
 		istanbul({
 			include: 'src/**/*',
-			exclude: ['node_modules', 'test/', 'tests/'],
+			exclude: ['node_modules', 'test/', 'tests/', 'src/lib/paraglide/**'],
 			extension: ['.js', '.ts', '.svelte'],
 			requireEnv: false,
 			forceBuildInstrument: process.env.VITE_COVERAGE === 'true'
