@@ -17,7 +17,7 @@
 <div class="flex min-h-dvh flex-col">
 	<Header />
 	<div class="flex flex-1 flex-col items-center justify-center px-4 sm:px-6">
-		<main class="w-full max-w-md">
+		<main class="w-full max-w-lg">
 			{@render children()}
 		</main>
 	</div>

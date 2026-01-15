@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { Sun, Moon, Monitor, Languages, Check } from 'lucide-svelte';
-	import { mode, setMode } from 'mode-watcher';
+	import { userPrefersMode, setMode } from 'mode-watcher';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { Button } from '$lib/components/ui/button';
 	import * as m from '$lib/paraglide/messages.js';
-	import { getLocale, setLocale, locales, type Locale } from '$lib/paraglide/runtime.js';
+	import { getLocale, setLocale, type Locale } from '$lib/paraglide/runtime.js';
 
 	const currentLocale = $derived(getLocale());
 
@@ -14,18 +14,25 @@
 		{ value: 'system', icon: Monitor, labelKey: 'header_theme_system' }
 	] as const;
 
-	function getLanguageLabel(locale: string): string {
-		switch (locale) {
-			case 'ko':
+	const languageOptions = [
+		{ value: 'ko' as Locale, flag: '🇰🇷', labelKey: 'lang_korean' },
+		{ value: 'en' as Locale, flag: '🇺🇸', labelKey: 'lang_english' },
+		{ value: 'ja' as Locale, flag: '🇯🇵', labelKey: 'lang_japanese' },
+		{ value: 'zh' as Locale, flag: '🇨🇳', labelKey: 'lang_chinese' }
+	] as const;
+
+	function getLanguageLabel(key: string): string {
+		switch (key) {
+			case 'lang_korean':
 				return m.lang_korean();
-			case 'en':
+			case 'lang_english':
 				return m.lang_english();
-			case 'ja':
+			case 'lang_japanese':
 				return m.lang_japanese();
-			case 'zh':
+			case 'lang_chinese':
 				return m.lang_chinese();
 			default:
-				return locale;
+				return key;
 		}
 	}
 
@@ -51,16 +58,14 @@
 	}
 </script>
 
-<header
-	class="border-border/40 bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur"
->
+<header class="border-border/40 bg-background sticky top-0 z-50 w-full border-b">
 	<div
 		class="container mx-auto flex h-14 max-w-screen-2xl items-center justify-between px-4 sm:px-6"
 	>
-		<!-- Logo placeholder -->
-		<div class="flex items-center gap-2">
-			<span class="text-foreground text-lg font-semibold">Meoru</span>
-		</div>
+		<!-- Logo -->
+		<a href="/" class="flex items-center gap-2">
+			<span class="text-foreground text-lg font-semibold">{m.seo_site_name()}</span>
+		</a>
 
 		<!-- Controls -->
 		<div class="flex items-center gap-2">
@@ -73,19 +78,22 @@
 						</Button>
 					{/snippet}
 				</DropdownMenu.Trigger>
-				<DropdownMenu.Content align="end">
-					{#each locales as locale (locale)}
-						<DropdownMenu.Item
-							onclick={() => handleLanguageChange(locale)}
-							class="flex items-center justify-between"
-						>
-							<span>{getLanguageLabel(locale)}</span>
-							{#if currentLocale === locale}
-								<Check class="ml-2 size-4" />
-							{/if}
-						</DropdownMenu.Item>
-					{/each}
-				</DropdownMenu.Content>
+			<DropdownMenu.Content align="end">
+				{#each languageOptions as option (option.value)}
+					<DropdownMenu.Item
+						onclick={() => handleLanguageChange(option.value)}
+						class="flex items-center justify-between"
+					>
+						<div class="flex items-center gap-2">
+							<span>{option.flag}</span>
+							<span>{getLanguageLabel(option.labelKey)}</span>
+						</div>
+						{#if currentLocale === option.value}
+							<Check class="ml-2 size-4" />
+						{/if}
+					</DropdownMenu.Item>
+				{/each}
+			</DropdownMenu.Content>
 			</DropdownMenu.Root>
 
 			<!-- Theme Toggle -->
@@ -110,7 +118,7 @@
 								<option.icon class="size-4" />
 								<span>{getThemeLabel(option.labelKey)}</span>
 							</div>
-							{#if (mode.current ?? 'system') === option.value}
+							{#if userPrefersMode.current === option.value}
 								<Check class="ml-2 size-4" />
 							{/if}
 						</DropdownMenu.Item>

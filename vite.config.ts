@@ -9,7 +9,10 @@ export default defineConfig({
 		tailwindcss(),
 		paraglideVitePlugin({
 			project: './project.inlang',
-			outdir: './src/lib/paraglide'
+			outdir: './src/lib/paraglide',
+			// locale 결정 우선순위:
+			// 1) 사용자가 선택한 값(쿠키) → 2) 브라우저/요청 헤더 선호 언어 → 3) 기본(ko)
+			strategy: ['cookie', 'preferredLanguage', 'baseLocale']
 		}),
 		sveltekit(),
 		istanbul({

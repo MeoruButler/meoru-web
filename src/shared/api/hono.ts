@@ -12,11 +12,38 @@ app.get('/health', (c) => {
 
 app.get('/spotify/now-playing', async (c) => {
 	try {
-		const { getNowPlaying } = await import('./spotify');
+		const { getNowPlaying, getRecentlyPlayed } = await import('./spotify');
 		const response = await getNowPlaying();
 
+		// 재생 중이 아니거나 에러인 경우 → recently-played로 fallback
 		if (response.status === 204 || response.status > 400) {
-			return c.json({ isPlaying: false });
+			try {
+				const recentResponse = await getRecentlyPlayed();
+
+				if (!recentResponse.ok) {
+					return c.json({ isPlaying: false });
+				}
+
+				const data = await recentResponse.json();
+
+				if (!data.items || data.items.length === 0) {
+					return c.json({ isPlaying: false });
+				}
+
+				const track = data.items[0].track;
+
+				return c.json({
+					isPlaying: false,
+					title: track.name,
+					artist: track.artists.map((_artist: { name: string }) => _artist.name).join(', '),
+					album: track.album.name,
+					albumImageUrl: track.album.images[0].url,
+					songUrl: track.external_urls.spotify,
+					isExplicit: track.explicit
+				});
+			} catch {
+				return c.json({ isPlaying: false });
+			}
 		}
 
 		const song = await response.json();
@@ -33,13 +60,16 @@ app.get('/spotify/now-playing', async (c) => {
 		const albumImageUrl = song.item.album.images[0].url;
 		const songUrl = song.item.external_urls.spotify;
 
+		const isExplicit = song.item.explicit;
+
 		return c.json({
 			isPlaying,
 			title,
 			artist,
 			album,
 			albumImageUrl,
-			songUrl
+			songUrl,
+			isExplicit
 		});
 	} catch (error) {
 		console.error('Detailed error in /spotify/now-playing:', error);

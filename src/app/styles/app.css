@@ -1,49 +1,97 @@
 @import 'tailwindcss';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Theme inspired by character colors:
+ * - Main Orange (hoodie/fur): #E07020 ~ #F4A050
+ * - Cream/Beige (face): #FFF5E0 ~ #FFE8C0
+ * - Red (eyes): #C02020 ~ #DD3333
+ * - Dark (outlines): #1a1a1a
+ */
+
 @layer base {
 	:root {
-		--background: 0 0% 100%;
-		--foreground: 222.2 84% 4.9%;
-		--muted: 210 40% 96.1%;
-		--muted-foreground: 215.4 16.3% 46.9%;
-		--popover: 0 0% 100%;
-		--popover-foreground: 222.2 84% 4.9%;
-		--card: 0 0% 100%;
-		--card-foreground: 222.2 84% 4.9%;
-		--border: 214.3 31.8% 91.4%;
-		--input: 214.3 31.8% 91.4%;
-		--primary: 222.2 47.4% 11.2%;
-		--primary-foreground: 210 40% 98%;
-		--secondary: 210 40% 96.1%;
-		--secondary-foreground: 222.2 47.4% 11.2%;
-		--accent: 210 40% 96.1%;
-		--accent-foreground: 222.2 47.4% 11.2%;
-		--destructive: 0 84.2% 60.2%;
-		--destructive-foreground: 210 40% 98%;
-		--ring: 215 20.2% 65.1%;
+		/* Warm cream background */
+		--background: 40 60% 97%;
+		--foreground: 25 30% 12%;
+
+		/* Muted: soft beige */
+		--muted: 35 40% 92%;
+		--muted-foreground: 25 15% 45%;
+
+		/* Popover: slightly warmer white */
+		--popover: 38 50% 98%;
+		--popover-foreground: 25 30% 12%;
+
+		/* Card: cream white */
+		--card: 38 45% 97%;
+		--card-foreground: 25 30% 12%;
+
+		/* Border/Input: warm beige */
+		--border: 35 30% 88%;
+		--input: 35 30% 88%;
+
+		/* Primary: main orange (hoodie color) */
+		--primary: 25 80% 50%;
+		--primary-foreground: 40 100% 97%;
+
+		/* Secondary: light cream/beige */
+		--secondary: 38 50% 93%;
+		--secondary-foreground: 25 30% 15%;
+
+		/* Accent: character red (eye color) */
+		--accent: 0 70% 45%;
+		--accent-foreground: 40 100% 97%;
+
+		/* Destructive: deeper red */
+		--destructive: 0 75% 50%;
+		--destructive-foreground: 40 100% 97%;
+
+		/* Ring: warm orange glow */
+		--ring: 25 60% 65%;
 		--radius: 0.5rem;
 	}
 
 	.dark {
-		--background: 222.2 84% 4.9%;
-		--foreground: 210 40% 98%;
-		--muted: 217.2 32.6% 17.5%;
-		--muted-foreground: 215 20.2% 65.1%;
-		--popover: 222.2 84% 4.9%;
-		--popover-foreground: 210 40% 98%;
-		--card: 222.2 84% 4.9%;
-		--card-foreground: 210 40% 98%;
-		--border: 217.2 32.6% 17.5%;
-		--input: 217.2 32.6% 17.5%;
-		--primary: 210 40% 98%;
-		--primary-foreground: 222.2 47.4% 11.2%;
-		--secondary: 217.2 32.6% 17.5%;
-		--secondary-foreground: 210 40% 98%;
-		--accent: 217.2 32.6% 17.5%;
-		--accent-foreground: 210 40% 98%;
-		--destructive: 0 62.8% 30.6%;
-		--destructive-foreground: 210 40% 98%;
-		--ring: 212.7 26.8% 83.9%;
+		/* Deep warm brown background */
+		--background: 25 35% 8%;
+		--foreground: 38 45% 92%;
+
+		/* Muted: dark warm brown */
+		--muted: 25 25% 15%;
+		--muted-foreground: 35 20% 60%;
+
+		/* Popover: slightly lighter dark */
+		--popover: 25 30% 10%;
+		--popover-foreground: 38 45% 92%;
+
+		/* Card: warm dark surface */
+		--card: 25 28% 12%;
+		--card-foreground: 38 45% 92%;
+
+		/* Border/Input: warm dark border */
+		--border: 25 20% 20%;
+		--input: 25 20% 20%;
+
+		/* Primary: bright orange (pops on dark) */
+		--primary: 28 85% 55%;
+		--primary-foreground: 25 35% 8%;
+
+		/* Secondary: muted warm brown */
+		--secondary: 25 25% 18%;
+		--secondary-foreground: 38 40% 90%;
+
+		/* Accent: bright red (eye color, vivid on dark) */
+		--accent: 0 65% 55%;
+		--accent-foreground: 38 45% 95%;
+
+		/* Destructive: vivid red */
+		--destructive: 0 70% 45%;
+		--destructive-foreground: 38 45% 95%;
+
+		/* Ring: orange glow */
+		--ring: 28 70% 50%;
 	}
 }
 
