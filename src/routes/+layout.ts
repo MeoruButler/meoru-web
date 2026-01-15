@@ -1,4 +1,1 @@
-import { dev } from '$app/environment';
-import { injectAnalytics } from '@vercel/analytics/sveltekit';
-
-injectAnalytics({ mode: dev ? 'development' : 'production' });
+// Layout configuration (if needed)

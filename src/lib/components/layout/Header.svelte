@@ -1,5 +1,9 @@
 <script lang="ts">
-	import { Sun, Moon, Monitor, Languages, Check } from 'lucide-svelte';
+	import Sun from '@lucide/svelte/icons/sun';
+	import Moon from '@lucide/svelte/icons/moon';
+	import Monitor from '@lucide/svelte/icons/monitor';
+	import Languages from '@lucide/svelte/icons/languages';
+	import Check from '@lucide/svelte/icons/check';
 	import { userPrefersMode, setMode } from 'mode-watcher';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { Button } from '$lib/components/ui/button';
