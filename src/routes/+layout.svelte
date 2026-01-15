@@ -2,6 +2,9 @@
 	import '$styles/app.css';
 	import { ModeWatcher } from 'mode-watcher';
 	import { Header } from '$lib/components/layout';
+	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+
+	injectSpeedInsights();
 
 	let { children } = $props();
 
