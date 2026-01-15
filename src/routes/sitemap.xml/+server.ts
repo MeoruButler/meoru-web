@@ -1,8 +1,7 @@
 import type { RequestHandler } from '@sveltejs/kit';
 
 export const GET: RequestHandler = () => {
-	// TODO: 실제 도메인으로 변경 필요
-	const site = 'https://meoru.dev';
+	const site = 'https://meoru-web.vercel.app';
 	const pages = [''];
 
 	const xml = `<?xml version="1.0" encoding="UTF-8"?>

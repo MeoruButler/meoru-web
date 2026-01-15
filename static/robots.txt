@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://meoru.dev/sitemap.xml
+Sitemap: https://meoru-web.vercel.app/sitemap.xml
