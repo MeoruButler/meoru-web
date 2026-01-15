@@ -1,0 +1,17 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"header_theme_light": "Light",
+	"header_theme_dark": "Dark",
+	"header_theme_system": "System",
+	"header_theme_toggle": "Toggle theme",
+	"header_language_toggle": "Change language",
+	"lang_korean": "한국어",
+	"lang_english": "English",
+	"lang_japanese": "日本語",
+	"lang_chinese": "中文",
+	"spotify_now_playing": "Now Playing",
+	"spotify_recently_played": "Recently Played",
+	"spotify_not_playing": "Not playing anything right now.",
+	"seo_site_name": "Meoru Butler",
+	"seo_default_description": "Meoru Butler's personal website."
+}

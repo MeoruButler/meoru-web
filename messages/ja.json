@@ -1,0 +1,17 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"header_theme_light": "ライト",
+	"header_theme_dark": "ダーク",
+	"header_theme_system": "システム",
+	"header_theme_toggle": "テーマ切替",
+	"header_language_toggle": "言語変更",
+	"lang_korean": "한국어",
+	"lang_english": "English",
+	"lang_japanese": "日本語",
+	"lang_chinese": "中文",
+	"spotify_now_playing": "再生中",
+	"spotify_recently_played": "最近再生した曲",
+	"spotify_not_playing": "現在再生中の曲はありません。",
+	"seo_site_name": "メオル執事",
+	"seo_default_description": "メオル執事の個人ウェブサイトです。"
+}

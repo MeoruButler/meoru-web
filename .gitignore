@@ -1,4 +1,5 @@
 node_modules
+.pnpm-store/
 
 # Output
 .output
@@ -19,9 +20,18 @@ Thumbs.db
 # Vite
 vite.config.ts.timestamp-*
 
-
 # Testing
 /test-results/
 /playwright-report/
 /coverage/
 .nyc_output
+
+# IDE
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*

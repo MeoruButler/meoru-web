@@ -15,7 +15,8 @@ const config = {
 		alias: {
 			$shared: 'src/shared',
 			$widgets: 'src/widgets',
-			$styles: 'src/app/styles'
+			$styles: 'src/app/styles',
+			$paraglide: 'src/lib/paraglide'
 		}
 	}
 };

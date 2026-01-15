@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { cn } from '$shared/lib/utils';
+	import { cn } from '$lib/utils';
+	import * as m from '$lib/paraglide/messages.js';
 
 	// Define types for our data
 	type SpotifyData = {
@@ -78,7 +79,7 @@
 					<p
 						class="mb-1 text-[10px] font-medium tracking-wider text-green-500 uppercase sm:text-xs"
 					>
-						Now Playing
+						{m.spotify_now_playing()}
 					</p>
 					<a
 						href={nowPlaying.songUrl}
@@ -105,7 +106,7 @@
 					<p
 						class="text-muted-foreground mb-1 text-[10px] font-medium tracking-wider uppercase sm:text-xs"
 					>
-						Recently Played
+						{m.spotify_recently_played()}
 					</p>
 					<a
 						href={recent.songUrl}
@@ -119,7 +120,7 @@
 		{/if}
 
 		{#if !nowPlaying?.isPlaying && !recent?.title}
-			<p class="text-muted-foreground text-xs sm:text-sm">Not playing anything right now.</p>
+			<p class="text-muted-foreground text-xs sm:text-sm">{m.spotify_not_playing()}</p>
 		{/if}
 	{/if}
 </div>

@@ -1,0 +1,17 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"header_theme_light": "浅色",
+	"header_theme_dark": "深色",
+	"header_theme_system": "系统",
+	"header_theme_toggle": "切换主题",
+	"header_language_toggle": "切换语言",
+	"lang_korean": "한국어",
+	"lang_english": "English",
+	"lang_japanese": "日本語",
+	"lang_chinese": "中文",
+	"spotify_now_playing": "正在播放",
+	"spotify_recently_played": "最近播放",
+	"spotify_not_playing": "当前没有播放任何音乐。",
+	"seo_site_name": "猫露管家",
+	"seo_default_description": "猫露管家的个人网站。"
+}

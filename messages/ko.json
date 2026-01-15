@@ -1,0 +1,17 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"header_theme_light": "라이트",
+	"header_theme_dark": "다크",
+	"header_theme_system": "시스템",
+	"header_theme_toggle": "테마 변경",
+	"header_language_toggle": "언어 변경",
+	"lang_korean": "한국어",
+	"lang_english": "English",
+	"lang_japanese": "日本語",
+	"lang_chinese": "中文",
+	"spotify_now_playing": "재생 중",
+	"spotify_recently_played": "최근 재생",
+	"spotify_not_playing": "현재 재생 중인 음악이 없습니다.",
+	"seo_site_name": "머루집사",
+	"seo_default_description": "머루집사의 개인 웹사이트입니다."
+}
