@@ -75,7 +75,9 @@
 					style="animation-duration: 10s;"
 				/>
 				<div class="flex min-w-0 flex-col">
-					<p class="mb-1 text-[10px] font-medium tracking-wider text-green-500 uppercase sm:text-xs">
+					<p
+						class="mb-1 text-[10px] font-medium tracking-wider text-green-500 uppercase sm:text-xs"
+					>
 						Now Playing
 					</p>
 					<a
@@ -100,7 +102,9 @@
 					/>
 				{/if}
 				<div class="flex min-w-0 flex-col">
-					<p class="text-muted-foreground mb-1 text-[10px] font-medium tracking-wider uppercase sm:text-xs">
+					<p
+						class="text-muted-foreground mb-1 text-[10px] font-medium tracking-wider uppercase sm:text-xs"
+					>
 						Recently Played
 					</p>
 					<a
