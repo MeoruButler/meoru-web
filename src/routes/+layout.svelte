@@ -13,8 +13,8 @@
 
 	// Theme colors matching app.css - using HSL values converted to hex
 	const themeColors = {
-		light: '#ffffff', // --background in :root (hsl(0 0% 100%))
-		dark: '#020817' // --background in .dark (hsl(222.2 84% 4.9%))
+		light: '#fcf9f3', // --background in :root (hsl(40 60% 97%)) - warm cream
+		dark: '#1c130d' // --background in .dark (hsl(25 35% 8%)) - warm brown
 	} as const;
 </script>
 
